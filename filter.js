@@ -1,6 +1,6 @@
-  
+
 /**
- * To run this file in Gitpod, use the 
+ * To run this file in Gitpod, use the
  * command node filter.js in the terminal
  */
 
@@ -20,6 +20,14 @@ const people = [
     age: 18,
   },
 ];
+
+const oldenoughTodrink = people.filter(item=>item.age >= 18)
+
+console.log(oldenoughTodrink)
+
+const paul = people.filter(item=>item.name ==='Paul')[0]
+console.log(paul)
+
 
 
 // Complex Filtering
@@ -55,3 +63,21 @@ const students = [
     ]
   },
 ];
+
+// short way
+const has5yearsExperience = skill=> skill.yrsExperience >=5;
+const hasStrongSkills = student=> student.skills.filter(has5yearsExperience).length > 0;
+const candidates = students.filter(hasStrongSkills)
+console.log(candidates)
+let names = candidates.map(item=> item.name)
+console.log(names)
+// One way
+const candidates = students.filter(student=>{
+  let strongSkills = student.skills.filter(skill=> skill.yrsExperience >=5)
+  console.log(strongSkills)
+  return strongSkills.length > 0
+
+  })
+console.log(candidates)
+let names = candidates.map(item=> item.name)
+console.log(names)
